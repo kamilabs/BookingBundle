@@ -4,6 +4,7 @@ parameters:
 
 framework:
   test: ~
+  translator: { fallbacks: ["en"] }
   templating: { engines: ['php', 'twig'] }
   session:
       storage_id: session.storage.mock_file

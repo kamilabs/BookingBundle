@@ -1,0 +1,4 @@
+/vendor
+/Tests/Fixtures/app/cache/
+/Tests/Fixtures/app/logs/
+composer.lock

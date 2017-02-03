@@ -1,0 +1,40 @@
+{
+    "name": "kami/booking-bundle",
+    "type": "symfony-bundle",
+    "keywords": ["booking", "availability", "calendar"],
+    "homepage": "https://github.com/kamilabs/BookingBundle",
+    "description": "Adds some booking functionality to your Symfony project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Iakov Mishchenko",
+            "email": "iakov@kamilabs.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php":">=5.3.2",
+        "symfony/framework-bundle": "~2.8",
+        "symfony/finder": "~2.8",
+        "symfony/filesystem": "~2.8",
+        "symfony/options-resolver": "~2.8",
+
+        "symfony/twig-bundle": "~2.8",
+        "symfony/browser-kit": "~2.8",
+        "twig/twig": "~1.3",
+        "twig/extensions": "~1.4",
+        "doctrine/orm": "~2.5",
+        "doctrine/doctrine-bundle": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.5",
+        "doctrine/doctrine-fixtures-bundle": "dev-master"
+    },
+    "suggest": {
+        "doctrine/mongodb-odm": "1.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": { "Kami\\BookingBundle": "" }
+    },
+    "target-dir": "Kami/BookingBundle"
+}

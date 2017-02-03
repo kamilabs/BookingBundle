@@ -1,0 +1,24 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.1
+
+
+env:
+  - SYMFONY_VERSION=2.8.*
+  - SYMFONY_VERSION=3.2.*
+
+before_script:
+  - composer self-update
+  - composer require symfony/framework-bundle:${SYMFONY_VERSION} --prefer-source
+  - composer install --dev --prefer-source
+  - php Tests/Fixtures/app/console doctrine:database:create
+  - php Tests/Fixtures/app/console doctrine:schema:drop --force
+  - php Tests/Fixtures/app/console doctrine:schema:create
+  - php Tests/Fixtures/app/console doctrine:fixtures:load --fixtures="Tests/Fixtures/Data/" -n
+
+notifications:
+  email: iakov@kamilabs.com

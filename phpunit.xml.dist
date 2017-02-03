@@ -1,0 +1,24 @@
+<phpunit bootstrap="./Tests/bootstrap.php" colors="true">
+
+    <testsuites>
+        <testsuite name="KamiBookingBundleTestSuite">
+            <directory suffix="Test.php">./Tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <server name="KERNEL_DIR" value="Tests/Fixtures/app/" />
+    </php>
+
+    <filter>
+        <whitelist>
+            <directory>./</directory>
+            <exclude>
+                <directory>./Resources</directory>
+                <directory>./Fixtures</directory>
+                <directory>./Tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>

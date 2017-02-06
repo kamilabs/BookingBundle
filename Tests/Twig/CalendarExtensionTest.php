@@ -22,7 +22,7 @@ class CalendarExtensionTest extends WebTestCase
         $this->container = self::$kernel->getContainer();
         $this->item = $this->container->get('doctrine')
             ->getRepository('Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem')
-            ->findOneBy([[]]);
+            ->findOneBy([]);
     }
 
     public function testCanBeConstructedWithNeededArguments()

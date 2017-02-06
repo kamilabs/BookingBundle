@@ -3,6 +3,7 @@ KamiBookingBundle
 
 [![Build Status](https://travis-ci.org/kamilabs/BookingBundle.svg?branch=master)](https://travis-ci.org/kamilabs/BookingBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5f951963-0bf5-4721-b2ef-7822800f740f/mini.png)](https://insight.sensiolabs.com/projects/5f951963-0bf5-4721-b2ef-7822800f740f)
+[![HHVM Status](http://hhvm.h4cc.de/badge/kami/booking-bundle.svg)](http://hhvm.h4cc.de/package/kami/booking-bundle)
 
 -------------
 

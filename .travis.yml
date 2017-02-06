@@ -3,6 +3,7 @@ language: php
 php:
   - 5.6
   - 7.1
+  - hhvm
 
 
 env:
@@ -19,6 +20,8 @@ before_script:
   - php Tests/Fixtures/app/console doctrine:schema:drop --force
   - php Tests/Fixtures/app/console doctrine:schema:create
   - php Tests/Fixtures/app/console doctrine:fixtures:load --fixtures="Tests/Fixtures/Data/" -n
+
+script: vendor/bin/phpunit
 
 notifications:
   email: iakov@kamilabs.com

@@ -14,7 +14,7 @@ class LoadBookingData extends AbstractFixture implements OrderedFixtureInterface
     {
         $booking = new Booking();
         $item = $manager->getRepository('Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem')
-            ->findOneBy(array());
+            ->findOneBy([]);
 
         $booking->setItem($item);
         $booking->setStart(new \DateTime('2014-05-01'));

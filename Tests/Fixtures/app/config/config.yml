@@ -15,9 +15,13 @@ framework:
 
 doctrine:
   dbal:
-      driver: pdo_sqlite
-      path: %kernel.cache_dir%/data.db3
-      charset: UTF8
+      driver:   pdo_mysql
+      host:     localhost
+      port:     ~
+      dbname:   booking
+      user:     travis
+      password: ~
+      charset:  UTF8
   orm:
     auto_generate_proxy_classes: "%kernel.debug%"
     auto_mapping: false

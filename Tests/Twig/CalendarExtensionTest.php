@@ -22,7 +22,7 @@ class CalendarExtensionTest extends WebTestCase
         $this->container = self::$kernel->getContainer();
         $this->item = $this->container->get('doctrine')
             ->getRepository('Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem')
-            ->findOneBy(array());
+            ->findOneBy([[]]);
     }
 
     public function testCanBeConstructedWithNeededArguments()
@@ -31,7 +31,7 @@ class CalendarExtensionTest extends WebTestCase
             $this->container->get('doctrine'));
     }
 
-    public function testKernelShouldContainBCalendarExtension()
+    public function testContainerShouldContainCalendarExtension()
     {
 
         $this->assertInstanceOf('Symfony\Component\DependencyInjection\ContainerInterface', $this->container);

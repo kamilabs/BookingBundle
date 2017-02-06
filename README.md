@@ -1,7 +1,7 @@
 KamiBookingBundle
-=============
+=================
 
-[![Build Status](https://travis-ci.org/kami/KamiBookingBundle.svg?branch=master)](https://travis-ci.org/me1ifaro/KamiBookingBundle)
+[![Build Status](https://travis-ci.org/kamilabs/BookingBundle.svg?branch=master)](https://travis-ci.org/kamilabs/BookingBundle)
 
 -------------
 

@@ -19,7 +19,7 @@ Prefered way to install this bundle is using [composer](http://getcomposer.org)
 
 Download the bundle:
 ```bash
-$ php composer.phar require "kami/booking-bundle:dev-master"
+$ php composer.phar require "kami/booking-bundle"
 ```
 ### 2. Add it to your Kernel:
 

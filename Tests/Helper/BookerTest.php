@@ -2,9 +2,9 @@
 
 namespace Kami\BookingBundle\Tests\Helper;
 
+use Kami\BookingBundle\Helper\Booker;
 use Kami\BookingBundle\Tests\Fixtures\ORM\Entity\Booking;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Kami\BookingBundle\Helper\Booker;
 
 class BookerTest extends WebTestCase
 {
@@ -24,7 +24,7 @@ class BookerTest extends WebTestCase
         $this->container = self::$kernel->getContainer();
         $this->item = $this->container->get('doctrine')
             ->getRepository('Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem')
-            ->findOneBy(array());
+            ->findOneBy([]);
     }
 
     public function testShouldBeConstructedWithNeededArguments()
@@ -35,7 +35,6 @@ class BookerTest extends WebTestCase
 
     public function testKernelShouldContainBookerService()
     {
-
         $this->assertInstanceOf('Symfony\Component\DependencyInjection\ContainerInterface', $this->container);
         $this->assertInstanceOf('Kami\BookingBundle\Helper\Booker', $this->container->get('booker'));
     }
@@ -78,7 +77,7 @@ class BookerTest extends WebTestCase
             ->getRepository('Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem')
             ->createQueryBuilder('i');
 
-        $booker->whereAvailableForPeriod($qb, array('field'=>'bookings', 'alias'=>'b'),
+        $booker->whereAvailableForPeriod($qb, ['field'=>'bookings', 'alias'=>'b'],
             new\DateTime($start), new \DateTime($end));
 
         $this->assertInstanceOf('Doctrine\ORM\QueryBuilder', $qb);
@@ -98,7 +97,7 @@ class BookerTest extends WebTestCase
             ->getRepository('Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem')
             ->createQueryBuilder('i');
 
-        $booker->whereAvailableForDate($qb, array('field'=>'bookings', 'alias'=>'b'),
+        $booker->whereAvailableForDate($qb, ['field'=>'bookings', 'alias'=>'b'],
             new\DateTime($start));
 
         $this->assertInstanceOf('Doctrine\ORM\QueryBuilder', $qb);
@@ -124,26 +123,25 @@ class BookerTest extends WebTestCase
             $manager->remove($result);
             $manager->flush();
         }
-
     }
 
     public function multipleDatesProvider()
     {
-        return array(
-            array('2014-05-03', '2014-05-06', false),
-            array('2014-04-20', '2014-05-02', false),
-            array('2014-05-07', '2014-05-15', false),
-            array('2014-04-03', '2014-04-06', true),
-            array('2014-05-10', '2014-05-20', true),
-        );
+        return [
+            ['2014-05-03', '2014-05-06', false],
+            ['2014-04-20', '2014-05-02', false],
+            ['2014-05-07', '2014-05-15', false],
+            ['2014-04-03', '2014-04-06', true],
+            ['2014-05-10', '2014-05-20', true],
+        ];
     }
 
     public function singleDateProvider()
     {
-        return array(
-            array('2014-05-03', false),
-            array('2014-04-20', true),
-            array('2014-05-10', true)
-        );
+        return [
+            ['2014-05-03', false],
+            ['2014-04-20', true],
+            ['2014-05-10', true],
+        ];
     }
 }

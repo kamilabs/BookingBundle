@@ -35,13 +35,13 @@ class Booker
 
     /**
      * @param $item
-     * @param  \DateTime $start
-     * @param  \DateTime $end
+     * @param \DateTime $start
+     * @param \DateTime $end
+     *
      * @return bool
      */
     public function isAvailableForPeriod($item, \DateTime $start, \DateTime $end)
     {
-
         $qb = $this->repository->createQueryBuilder('b');
         $query = $qb->select('b.id')
             ->where('b.start <= :start AND b.end >= :end')
@@ -50,12 +50,11 @@ class Booker
             ->orWhere('b.start <= :start AND b.end <= :end AND b.end >= :start')
 
             ->andWhere('b.item = :item')
-            ->setParameters(array(
+            ->setParameters([
                 'start'=> $start,
                 'end'  => $end,
-                'item' => $item
-            ))
-            ;
+                'item' => $item,
+            ]);
 
         $results = $query->getQuery()->getResult();
 
@@ -64,7 +63,8 @@ class Booker
 
     /**
      * @param $item
-     * @param  \DateTime $date
+     * @param \DateTime $date
+     *
      * @return bool
      */
     public function isAvailableForDate($item, \DateTime $date)
@@ -84,8 +84,8 @@ class Booker
     /**
      * @param QueryBuilder $queryBuilder
      * @param $join array(field, alias)
-     * @param \DateTime    $start
-     * @param \DateTime    $end
+     * @param \DateTime $start
+     * @param \DateTime $end
      */
     public function whereAvailableForPeriod(QueryBuilder $queryBuilder, $join, \DateTime $start, \DateTime $end)
     {
@@ -97,31 +97,28 @@ class Booker
             ->orWhere($join['alias'].'.start >= :start AND '.$join['alias'].'.end <= :end AND '.
                 $join['alias'].'.end >= :start')
 
-            ->setParameters(array(
+            ->setParameters([
                 'start'=> $start,
                 'end'  => $end,
-            ))
-        ;
+            ]);
     }
 
     /**
      * @param QueryBuilder $queryBuilder
      * @param $join
-     * @param \DateTime    $date
+     * @param \DateTime $date
      */
     public function whereAvailableForDate(QueryBuilder $queryBuilder, $join, \DateTime $date)
     {
         $queryBuilder->leftJoin($join['field'], $join['alias'])
             ->where('b.start >= :date AND b.end <= :date')
-            ->setParameter('date', $date)
-        ;
+            ->setParameter('date', $date);
     }
 
     public function book($item, \DateTime $start, \DateTime $end)
     {
         if ($this->isAvailableForPeriod($item, $start, $end)) {
-
-            $entity = new $this->entity;
+            $entity = new $this->entity();
             $entity->setStart($start);
             $entity->setEnd($end);
             $entity->setItem($item);
@@ -135,5 +132,4 @@ class Booker
 
         return false;
     }
-
 }

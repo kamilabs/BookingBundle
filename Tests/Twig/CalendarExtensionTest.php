@@ -1,4 +1,5 @@
 <?php
+
 namespace Kami\BookingBundle\Tests\Twig;
 
 use Kami\BookingBundle\Twig\CalendarExtension;
@@ -33,7 +34,6 @@ class CalendarExtensionTest extends WebTestCase
 
     public function testContainerShouldContainCalendarExtension()
     {
-
         $this->assertInstanceOf('Symfony\Component\DependencyInjection\ContainerInterface', $this->container);
         $this->assertInstanceOf('Kami\BookingBundle\Twig\CalendarExtension',
             $this->container->get('booking_calendar'));
@@ -51,7 +51,7 @@ class CalendarExtensionTest extends WebTestCase
 
     public function testShouldContainFunctions()
     {
-        $cal =  $this->container->get('booking_calendar');
+        $cal = $this->container->get('booking_calendar');
 
         $functions = $cal->getFunctions();
 

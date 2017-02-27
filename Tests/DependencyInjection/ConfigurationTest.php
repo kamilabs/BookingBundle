@@ -3,8 +3,8 @@
 namespace Kami\BookingBundle\Tests\DependencyInjection;
 
 use Kami\BookingBundle\DependencyInjection\Configuration;
-use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Processor;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,17 +17,17 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     public function testCouldBeConstructedWithResolversAndLoadersFactoriesAsArguments()
     {
-        new Configuration(array(), array());
+        new Configuration([], []);
     }
 
     public function testInjection()
     {
         $config = $this->processConfiguration(new Configuration(),
-            array(
-                'kami_booking'=> array(
-                    'entity_class' => 'Vendor\Bundle\Entity\Class'
-                )
-            )
+            [
+                'kami_booking'=> [
+                    'entity_class' => 'Vendor\Bundle\Entity\Class',
+                ],
+            ]
         );
 
         $this->assertArrayHasKey('entity_class', $config);
@@ -40,12 +40,11 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testExceptionIfRequiredParameterIsMissing()
     {
         $config = $this->processConfiguration(new Configuration(),
-            array(
-                'kami_booking'=> array(
-                )
-            )
+            [
+                'kami_booking'=> [
+                ],
+            ]
         );
-
     }
 
     /**

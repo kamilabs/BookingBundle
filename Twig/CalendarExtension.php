@@ -7,7 +7,8 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 class CalendarExtension extends \Twig_Extension
 {
     /**
-     * Entity class
+     * Entity class.
+     *
      * @var string
      */
     private $entity;
@@ -28,26 +29,28 @@ class CalendarExtension extends \Twig_Extension
      */
     public function __construct($entity, Registry $doctrine)
     {
-        $this->entity   = $entity;
+        $this->entity = $entity;
         $this->doctrine = $doctrine;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getFunctions()
     {
-        return array(
-            new \Twig_SimpleFunction('kami_booking_calendar', array($this, 'renderCalendar'), array('is_safe'=>array('html')))
-        );
+        return [
+            new \Twig_SimpleFunction('kami_booking_calendar', [$this, 'renderCalendar'], ['is_safe'=>['html']]),
+        ];
     }
 
     /**
      * @param $item
-     * @param  string                    $start
-     * @param  int                       $months
-     * @return string
+     * @param string $start
+     * @param int    $months
+     *
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     public function renderCalendar($item, $start = 'now', $months = 1)
     {
@@ -66,20 +69,19 @@ class CalendarExtension extends \Twig_Extension
             ->orWhere('b.end >= :now')
             ->andWhere('b.item = :item')
             ->orderBy('b.start', 'ASC')
-            ->setParameters(array(
+            ->setParameters([
                 'now' => $now,
                 'end' => $end,
-                'item'=> $item
-            ))
+                'item'=> $item,
+            ])
             ->getQuery()
             ->getResult();
-        ;
 
-        return $this->environment->render('KamiBookingBundle:Calendar:month.html.twig', array(
-            'bookings'=>$bookings,
-            'start' => $start,
-            'months'=>$months
-        ));
+        return $this->environment->render('KamiBookingBundle:Calendar:month.html.twig', [
+            'bookings'=> $bookings,
+            'start'   => $start,
+            'months'  => $months,
+        ]);
     }
 
     public function initRuntime(\Twig_Environment $environment)

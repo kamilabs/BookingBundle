@@ -5,8 +5,8 @@ namespace Kami\BookingBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 
 /**
- * Class Booking
- * @package Kami\BookingBundle\Document
+ * Class Booking.
+ *
  * @codeCoverageIgnore
  * @ODM\MappedSuperClass
  */
@@ -29,9 +29,9 @@ abstract class Booking
     protected $end;
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -39,9 +39,10 @@ abstract class Booking
     }
 
     /**
-     * Set start
+     * Set start.
      *
-     * @param  \DateTime $start
+     * @param \DateTime $start
+     *
      * @return Booking
      */
     public function setStart($start)
@@ -52,7 +53,7 @@ abstract class Booking
     }
 
     /**
-     * Get start
+     * Get start.
      *
      * @return \DateTime
      */
@@ -62,9 +63,10 @@ abstract class Booking
     }
 
     /**
-     * Set end
+     * Set end.
      *
-     * @param  \DateTime $end
+     * @param \DateTime $end
+     *
      * @return Booking
      */
     public function setEnd($end)
@@ -75,7 +77,7 @@ abstract class Booking
     }
 
     /**
-     * Get end
+     * Get end.
      *
      * @return \DateTime
      */

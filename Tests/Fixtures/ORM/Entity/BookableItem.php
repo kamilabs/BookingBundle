@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Booking
+ * Booking.
  *
  * @ORM\Entity()
  * @ORM\Table(name="item")
@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class BookableItem
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id

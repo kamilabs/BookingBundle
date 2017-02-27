@@ -2,11 +2,11 @@
 
 namespace Kami\BookingBundle\Tests\Fixtures\ORM\Entity;
 
-use Kami\BookingBundle\Entity\Booking as BaseClass;
 use Doctrine\ORM\Mapping as ORM;
+use Kami\BookingBundle\Entity\Booking as BaseClass;
 
 /**
- * Booking
+ * Booking.
  *
  * @ORM\Entity()
  * @ORM\Table(name="booking")
@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Booking extends BaseClass
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -31,7 +31,8 @@ class Booking extends BaseClass
     protected $item;
 
     /**
-     * @param  \Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem $item
+     * @param \Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem $item
+     *
      * @return $this
      */
     public function setItem($item)

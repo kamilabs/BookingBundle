@@ -9,7 +9,6 @@ use Kami\BookingBundle\Tests\Fixtures\ORM\Entity\BookableItem;
 
 class LoadItemData extends AbstractFixture implements OrderedFixtureInterface
 {
-
     public function load(ObjectManager $manager)
     {
         $item = new BookableItem();
